@@ -1,3 +1,2 @@
-/webapp/nb-configuration.xml
-/filter/target/
-/webapp/target/
+nb-configuration.xml
+target/
