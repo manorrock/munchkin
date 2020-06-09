@@ -19,10 +19,13 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build and push Docker images
+    - name: Build amd64 image
       run: |
         cd webapp
-        docker build -f src/main/docker/Dockerfile -t manorrock/munchkin:snapshot .
-        docker push manorrock/munchkin:snapshot
-        docker build -f src/main/docker/Dockerfile.ARM32v6 -t manorrock/munchkin:arm32v6-snapshot .
-        docker push manorrock/munchkin:arm32v6-snapshot
+        docker build -f src/main/docker/Dockerfile.arm -t manorrock/munchkin:arm-snapshot .
+        docker push manorrock/munchkin:arm-snapshot
+    - name: Build arm image
+      run: |
+        cd webapp
+        docker build -f src/main/docker/Dockerfile.arm -t manorrock/munchkin:arm-snapshot .
+        docker push manorrock/munchkin:arm-snapshot
