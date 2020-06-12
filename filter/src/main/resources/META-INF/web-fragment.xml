@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-fragment xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-fragment_4_0.xsd"
+              version="4.0">
+    <name>Munchkin</name>
+    <ordering>
+        <after>
+            <name>Birman</name>
+        </after>
+    </ordering>    
+    <filter>
+        <filter-name>MunchkinFilter</filter-name>
+        <filter-class>com.manorrock.munchkin.filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>MunchkinFilter</filter-name>
+    </filter-mapping>
+</web-fragment>

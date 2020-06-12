@@ -28,28 +28,18 @@ package com.manorrock.munchkin.filter;
 import java.io.IOException;
 import static java.util.logging.Level.INFO;
 import java.util.logging.Logger;
-import static javax.servlet.DispatcherType.ERROR;
-import static javax.servlet.DispatcherType.FORWARD;
-import static javax.servlet.DispatcherType.INCLUDE;
-import static javax.servlet.DispatcherType.REQUEST;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 /**
- * The Birman authentication filter.
+ * The Munchkin authorization filter.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-@WebFilter(
-        filterName = "MunchkinFilter",
-        urlPatterns = {"/*"},
-        dispatcherTypes = {REQUEST, FORWARD, ERROR, INCLUDE}
-)
 public class MunchkinFilter implements Filter {
 
     /**
