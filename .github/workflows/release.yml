@@ -22,18 +22,20 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build amd64 image
       run: |
+        cd webapp
         TAG=${GITHUB_REF}
         INDEX=${TAG%v*}
         VERSION=${TAG:${#INDEX}}
-        docker build -f src/main/docker/Dockerfile.amd64 -t manorrock/munchkin:$VERSION .
-        docker push manorrock/munchkin:$VERSION
-    - name: Build ARM32v6 image
+        docker build -f src/main/docker/Dockerfile.amd64 -t manorrock/munchkin:amd64-$VERSION .
+        docker push manorrock/munchkin:amd64-$VERSION
+    - name: Build arm image
       run: |
+        cd webapp
         TAG=${GITHUB_REF}
         INDEX=${TAG%v*}
         VERSION=${TAG:${#INDEX}}
-        docker build -f src/main/docker/Dockerfile.ARM32v6 -t manorrock/munchkin:arm32v6-$VERSION .
-        docker push manorrock/munchkin:arm32v6-$VERSION
+        docker build -f src/main/docker/Dockerfile.arm -t manorrock/munchkin:arm-$VERSION .
+        docker push manorrock/munchkin:arm-$VERSION
     - name: Push Docker manifest
       run: |
         cd webapp

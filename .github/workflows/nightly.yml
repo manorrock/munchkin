@@ -22,8 +22,8 @@ jobs:
     - name: Build amd64 image
       run: |
         cd webapp
-        docker build -f src/main/docker/Dockerfile.arm -t manorrock/munchkin:arm-snapshot .
-        docker push manorrock/munchkin:arm-snapshot
+        docker build -f src/main/docker/Dockerfile.amd64 -t manorrock/munchkin:amd64-snapshot .
+        docker push manorrock/munchkin:amd64-snapshot
     - name: Build arm image
       run: |
         cd webapp
