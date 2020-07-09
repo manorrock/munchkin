@@ -30,6 +30,7 @@
     <modules>
         <module>filter</module>
         <module>webapp</module>
+        <module>shared</module>
     </modules>
     <profiles>
         <profile>
