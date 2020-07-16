@@ -4,12 +4,12 @@
     <parent>
         <artifactId>project</artifactId>
         <groupId>com.manorrock.munchkin</groupId>
-        <version>20.6.0-SNAPSHOT</version>
+        <version>20.7.0</version>
     </parent>
 
     <groupId>com.manorrock.munchkin</groupId>
     <artifactId>webapp</artifactId>
-    <version>20.6.0-SNAPSHOT</version>
+    <version>20.7.0</version>
     <packaging>war</packaging>
 
     <name>Manorrock Munchkin - Web Application</name>
