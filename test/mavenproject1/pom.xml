@@ -4,7 +4,7 @@
     <parent>
         <artifactId>project</artifactId>
         <groupId>com.manorrock.munchkin.test</groupId>
-        <version>20.6.0-SNAPSHOT</version>
+        <version>20.8.0-SNAPSHOT</version>
     </parent>
     <artifactId>munchkin-test-webapp</artifactId>
     <packaging>war</packaging>
