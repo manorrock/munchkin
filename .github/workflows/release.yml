@@ -39,6 +39,9 @@ jobs:
     - name: Push Docker manifest
       run: |
         cd webapp
+        TAG=${GITHUB_REF}
+        INDEX=${TAG%v*}
+        VERSION=${TAG:${#INDEX}}
         export DOCKER_CLI_EXPERIMENTAL=enabled
         docker manifest create manorrock/munchkin:$VERSION \
           manorrock/munchkin:amd64-$VERSION \
