@@ -25,6 +25,9 @@
  */
 package com.manorrock.munchkin.webapp;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import org.omnifaces.oyena.action.ActionMapping;
@@ -39,12 +42,35 @@ import org.omnifaces.oyena.action.ActionMapping;
 public class IndexController {
     
     /**
-     * Execute the page.
+     * Stores the list of applications.
+     */
+    private List<String> applications;
+    
+    /**
+     * Initialize the bean.
+     */
+    @PostConstruct
+    public void initialize() {
+        applications = new ArrayList<>();
+        applications.add("dummy");
+    }
+    
+    /**
+     * Execute the index action.
      *
      * @return /index.xhtml
      */
     @ActionMapping("/")
-    public String execute() {
+    public String index() {
         return "/WEB-INF/ui/index.xhtml";
+    }
+    
+    /**
+     * Get the applications.
+     * 
+     * @return the applications.
+     */
+    public List<String> getApplications() {
+        return applications;
     }
 }
