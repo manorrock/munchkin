@@ -25,43 +25,46 @@
  */
 package com.manorrock.munchkin.webapp;
 
-import java.util.List;
+import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import org.omnifaces.oyena.action.ActionMapping;
 
 /**
- * The controller for the index page.
+ * The controller for adding an application.
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-@Named("index")
+@Named("applicationAdd")
 @RequestScoped
-public class IndexController {
-    
+public class ApplicationAddController {
+
     /**
-     * Stores the application.
+     * Stores the one and only application.
      */
     @Inject
     private Application application;
     
     /**
-     * Execute the index action.
+     * Add an application.
      *
+     * @param request the HTTP servlet request.
+     * @param facesContext the Faces context.
      * @return /index.xhtml
      */
-    @ActionMapping("/")
-    public String index() {
-        return "/WEB-INF/ui/index.xhtml";
-    }
-    
-    /**
-     * Get the applications.
-     * 
-     * @return the applications.
-     */
-    public List<String> getApplications() {
-        return application.getApplications();
+    @ActionMapping("/application/add")
+    public String add(HttpServletRequest request, FacesContext facesContext) {
+        if (request.getParameter("name") != null) {
+            application.getApplications().add(request.getParameter("name"));
+            try {
+                facesContext.getExternalContext().redirect("/ui/");
+                facesContext.responseComplete();
+            } catch (IOException ioe) {
+            }
+        }
+        return "/WEB-INF/ui/application/add.xhtml";
     }
 }

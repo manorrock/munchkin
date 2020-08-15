@@ -25,43 +25,29 @@
  */
 package com.manorrock.munchkin.webapp;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-import org.omnifaces.oyena.action.ActionMapping;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
- * The controller for the index page.
+ * The one and only application.
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-@Named("index")
-@RequestScoped
-public class IndexController {
+@ApplicationScoped
+public class Application {
     
     /**
-     * Stores the application.
+     * Stores the applications.
      */
-    @Inject
-    private Application application;
-    
-    /**
-     * Execute the index action.
-     *
-     * @return /index.xhtml
-     */
-    @ActionMapping("/")
-    public String index() {
-        return "/WEB-INF/ui/index.xhtml";
-    }
-    
+    private final List<String> applications = new ArrayList<>();
+        
     /**
      * Get the applications.
      * 
      * @return the applications.
      */
     public List<String> getApplications() {
-        return application.getApplications();
+        return applications;
     }
 }

@@ -9,13 +9,11 @@
     </h:head>
     <h:body>
         <h1>Manorrock Munchkin</h1>
-        <p align="right">
-            <a href="#{facesContext.externalContext.requestContextPath}/ui/application/add">Add application</a>
-        </p>
-        <h:dataTable var="item" value="#{index.applications}">
-            <h:column>
-                <h:outputText value="#{item}"/>
-            </h:column>
-        </h:dataTable>
+        <h2>Add application</h2>
+        <form>
+            Application name: <input name="name" value=""/> <br/>
+            <input type="submit" value="Add"/>
+            <input type="reset" value="Cancel"/>
+        </form>
     </h:body> 
 </html>
