@@ -26,43 +26,47 @@
 package com.manorrock.munchkin.webapp;
 
 import com.manorrock.munchkin.shared.MunchkinApplication;
-import java.util.List;
+import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 import org.omnifaces.oyena.action.ActionMapping;
 
 /**
- * The controller for the index page.
+ * The controller for removing an application.
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-@Named("index")
+@Named("applicationRemove")
 @RequestScoped
-public class IndexController {
-    
+public class ApplicationRemoveController {
+
     /**
-     * Stores the application.
+     * Stores the one and only application.
      */
     @Inject
     private Application application;
     
     /**
-     * Execute the index action.
+     * Add an application.
      *
+     * @param request the HTTP servlet request.
+     * @param facesContext the Faces context.
      * @return /index.xhtml
      */
-    @ActionMapping("/")
-    public String index() {
-        return "/WEB-INF/ui/index.xhtml";
-    }
-    
-    /**
-     * Get the applications.
-     * 
-     * @return the applications.
-     */
-    public List<MunchkinApplication> getApplications() {
-        return application.getApplications();
+    @ActionMapping("/application/remove")
+    public String add(HttpServletRequest request, FacesContext facesContext) {
+        if (request.getParameter("id") != null) {
+            String id = request.getParameter("id");
+            application.getApplications().removeIf(app -> id.equals(app.getId()));
+            try {
+                facesContext.getExternalContext().redirect("/ui/");
+                facesContext.responseComplete();
+            } catch (IOException ioe) {
+            }
+        }
+        return "/WEB-INF/ui/application/remove.xhtml";
     }
 }

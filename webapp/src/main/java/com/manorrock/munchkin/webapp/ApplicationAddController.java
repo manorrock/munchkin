@@ -25,6 +25,7 @@
  */
 package com.manorrock.munchkin.webapp;
 
+import com.manorrock.munchkin.shared.MunchkinApplication;
 import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -58,7 +59,9 @@ public class ApplicationAddController {
     @ActionMapping("/application/add")
     public String add(HttpServletRequest request, FacesContext facesContext) {
         if (request.getParameter("name") != null) {
-            application.getApplications().add(request.getParameter("name"));
+            MunchkinApplication app = new MunchkinApplication();
+            app.setName(request.getParameter("name"));
+            application.getApplications().add(app);
             try {
                 facesContext.getExternalContext().redirect("/ui/");
                 facesContext.responseComplete();

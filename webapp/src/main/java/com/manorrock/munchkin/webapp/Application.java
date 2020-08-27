@@ -25,6 +25,7 @@
  */
 package com.manorrock.munchkin.webapp;
 
+import com.manorrock.munchkin.shared.MunchkinApplication;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
@@ -40,14 +41,14 @@ public class Application {
     /**
      * Stores the applications.
      */
-    private final List<String> applications = new ArrayList<>();
+    private final List<MunchkinApplication> applications = new ArrayList<>();
         
     /**
      * Get the applications.
      * 
      * @return the applications.
      */
-    public List<String> getApplications() {
+    public List<MunchkinApplication> getApplications() {
         return applications;
     }
 }

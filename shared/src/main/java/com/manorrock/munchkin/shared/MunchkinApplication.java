@@ -23,46 +23,68 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.munchkin.webapp;
+package com.manorrock.munchkin.shared;
 
-import com.manorrock.munchkin.shared.MunchkinApplication;
-import java.util.List;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-import org.omnifaces.oyena.action.ActionMapping;
+import java.io.Serializable;
+import java.util.UUID;
 
 /**
- * The controller for the index page.
+ * An application.
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-@Named("index")
-@RequestScoped
-public class IndexController {
+public class MunchkinApplication implements Serializable {
     
     /**
-     * Stores the application.
+     * Stores the id.
      */
-    @Inject
-    private Application application;
+    private String id;
     
     /**
-     * Execute the index action.
-     *
-     * @return /index.xhtml
+     * Stores the name.
      */
-    @ActionMapping("/")
-    public String index() {
-        return "/WEB-INF/ui/index.xhtml";
+    private String name;
+    
+    /**
+     * Constructor.
+     */
+    public MunchkinApplication() {
+        id = UUID.randomUUID().toString();
     }
-    
+
     /**
-     * Get the applications.
+     * Get the id.
      * 
-     * @return the applications.
+     * @return the id.
      */
-    public List<MunchkinApplication> getApplications() {
-        return application.getApplications();
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Get the name.
+     * 
+     * @return the name.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the id.
+     * 
+     * @param id the id.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Set the name.
+     * 
+     * @param name the name.
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 }

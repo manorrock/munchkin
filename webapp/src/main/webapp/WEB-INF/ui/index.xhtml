@@ -14,7 +14,10 @@
                 </p>
                 <h:dataTable var="item" value="#{index.applications}">
                     <h:column>
-                        <h:outputText value="#{item}"/>
+                        <h:outputText value="#{item.name}"/>
+                    </h:column>
+                    <h:column>
+                        <a href="#{facesContext.externalContext.requestContextPath}/ui/application/remove?id=#{item.id}">Delete</a>
                     </h:column>
                 </h:dataTable>
             </ui:define>

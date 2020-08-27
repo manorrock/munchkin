@@ -48,6 +48,13 @@
             <version>3.1.4.Final</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- Munchkin Shared -->
+        <dependency>
+            <groupId>com.manorrock.munchkin</groupId>
+            <artifactId>munchkin-shared</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- OmniFaces Oyena Action -->
         <dependency>
             <groupId>org.omnifaces.oyena</groupId>
@@ -65,8 +72,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
