@@ -67,6 +67,6 @@ public class ApplicationRemoveController {
             } catch (IOException ioe) {
             }
         }
-        return "/WEB-INF/ui/application/remove.xhtml";
+        return "";
     }
 }
