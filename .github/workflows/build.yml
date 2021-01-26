@@ -19,22 +19,22 @@ jobs:
     - name: Build amd64 image
       run: |
         cd webapp
-        docker build -f src/main/docker/Dockerfile.amd64 -t manorrock/munchkin:amd64-snapshot .
-        docker push manorrock/munchkin:amd64-snapshot
+        docker build -f src/main/docker/Dockerfile.amd64 -t manorrock/munchkin:amd64-latest .
+        docker push manorrock/munchkin:amd64-latest
     - name: Build arm32v6 image
       run: |
         cd webapp
-        docker build -f src/main/docker/Dockerfile.arm32v6 -t manorrock/munchkin:arm32v6-snapshot .
-        docker push manorrock/munchkin:arm32v6-snapshot
+        docker build -f src/main/docker/Dockerfile.arm32v6 -t manorrock/munchkin:arm32v6-latest .
+        docker push manorrock/munchkin:arm32v6-latest
     - name: Push Docker manifest
       run: |
         cd webapp
         export DOCKER_CLI_EXPERIMENTAL=enabled
-        docker manifest create manorrock/munchkin:snapshot \
-          manorrock/munchkin:amd64-snapshot \
-          manorrock/munchkin:arm32v6-snapshot
-        docker manifest annotate manorrock/munchkin:snapshot \
-          manorrock/munchkin:amd64-snapshot --os linux --arch amd64
-        docker manifest annotate manorrock/munchkin:snapshot \
-          manorrock/munchkin:arm32v6-snapshot --os linux --arch arm
-        docker manifest push manorrock/munchkin:snapshot
+        docker manifest create manorrock/munchkin:latest \
+          manorrock/munchkin:amd64-latest \
+          manorrock/munchkin:arm32v6-latest
+        docker manifest annotate manorrock/munchkin:latest \
+          manorrock/munchkin:amd64-latest --os linux --arch amd64
+        docker manifest annotate manorrock/munchkin:latest \
+          manorrock/munchkin:arm32v6-latest --os linux --arch arm
+        docker manifest push manorrock/munchkin:latest
