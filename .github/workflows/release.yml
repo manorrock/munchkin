@@ -34,8 +34,8 @@ jobs:
         TAG=${GITHUB_REF}
         INDEX=${TAG%v*}
         VERSION=${TAG:${#INDEX}}
-        docker build -f src/main/docker/Dockerfile.arm -t manorrock/munchkin:arm-$VERSION .
-        docker push manorrock/munchkin:arm-$VERSION
+        docker build -f src/main/docker/Dockerfile.arm32v6 -t manorrock/munchkin:arm32v6-$VERSION .
+        docker push manorrock/munchkin:arm32v6-$VERSION
     - name: Push Docker manifest
       run: |
         cd webapp
@@ -45,9 +45,9 @@ jobs:
         export DOCKER_CLI_EXPERIMENTAL=enabled
         docker manifest create manorrock/munchkin:$VERSION \
           manorrock/munchkin:amd64-$VERSION \
-          manorrock/munchkin:arm-$VERSION
+          manorrock/munchkin:arm32v6-$VERSION
         docker manifest annotate manorrock/munchkin:$VERSION \
           manorrock/munchkin:amd64-$VERSION --os linux --arch amd64
         docker manifest annotate manorrock/munchkin:$VERSION \
-          manorrock/munchkin:arm-$VERSION --os linux --arch arm
+          manorrock/munchkin:arm32v6-$VERSION --os linux --arch arm
         docker manifest push manorrock/munchkin:$VERSION
