@@ -30,7 +30,6 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.omnifaces.oyena.action.ActionMapping;
 
 /**
  * The controller for the index page.
@@ -52,7 +51,6 @@ public class IndexController {
      *
      * @return /index.xhtml
      */
-    @ActionMapping("/")
     public String index() {
         return "/WEB-INF/ui/index.xhtml";
     }

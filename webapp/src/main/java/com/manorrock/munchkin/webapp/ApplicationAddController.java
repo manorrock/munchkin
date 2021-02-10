@@ -32,7 +32,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.omnifaces.oyena.action.ActionMapping;
 
 /**
  * The controller for adding an application.
@@ -56,7 +55,6 @@ public class ApplicationAddController {
      * @param facesContext the Faces context.
      * @return /index.xhtml
      */
-    @ActionMapping("/application/add")
     public String add(HttpServletRequest request, FacesContext facesContext) {
         if (request.getParameter("name") != null) {
             MunchkinApplication app = new MunchkinApplication();

@@ -25,14 +25,12 @@
  */
 package com.manorrock.munchkin.webapp;
 
-import com.manorrock.munchkin.shared.MunchkinApplication;
 import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
-import org.omnifaces.oyena.action.ActionMapping;
 
 /**
  * The controller for removing an application.
@@ -56,7 +54,6 @@ public class ApplicationRemoveController {
      * @param facesContext the Faces context.
      * @return /index.xhtml
      */
-    @ActionMapping("/application/remove")
     public String add(HttpServletRequest request, FacesContext facesContext) {
         if (request.getParameter("id") != null) {
             String id = request.getParameter("id");
